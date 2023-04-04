@@ -3,22 +3,12 @@ import { classNames } from '../utils/classNames';
 
 import 'swiper/css/bundle';
 
-export function initBenefitsSlider() {
-  const sliderClass = classNames.slider.benefits.slider;
-  const sliderProgressBlock = classNames.slider.benefits.progress;
-  const sliderProgressFillClass = classNames.slider.benefits.progressFill;
-  const sliderProgressTotalClass = classNames.slider.benefits.progressTotal;
+function fillSliderProgress(sliderBlock, swiper) {
+  const fillClass = classNames.sliderProgress.fill;
+  const totalClass = classNames.sliderProgress.total;
 
-  const swiper = new Swiper(`.${sliderClass}`, {
-    spaceBetween: 20,
-    speed: 1000,
-    keyboard: true,
-    rewind: true,
-  });
-
-  const progressBlock = document.querySelector(`.${sliderProgressBlock}`);
-  const fill = progressBlock.querySelector(`.${sliderProgressFillClass}`);
-  const total = progressBlock.querySelector(`.${sliderProgressTotalClass}`);
+  const fill = sliderBlock.querySelector(`.${fillClass}`);
+  const total = sliderBlock.querySelector(`.${totalClass}`);
 
   total.textContent = swiper.slides.length < 10 ? `0${swiper.slides.length}` : swiper.slides.length;
 
@@ -29,6 +19,38 @@ export function initBenefitsSlider() {
 
   swiper.on('slideChange', handler);
   handler();
+}
+
+export function initBenefitsSlider() {
+  const sliderBlockClass = classNames.slider.benefits.sliderBlock;
+  const sliderClass = classNames.slider.benefits.slider;
+
+  const swiper = new Swiper(`.${sliderClass}`, {
+    spaceBetween: 16,
+    speed: 700,
+    keyboard: true,
+    rewind: true,
+  });
+
+  const sliderBlock = document.querySelector(`.${sliderBlockClass}`);
+  fillSliderProgress(sliderBlock, swiper);
+
+  return swiper;
+}
+
+export function initMemorableSlider() {
+  const sliderBlockClass = classNames.slider.memorable.sliderBlock;
+  const sliderClass = classNames.slider.memorable.slider;
+
+  const swiper = new Swiper(`.${sliderClass}`, {
+    spaceBetween: 16,
+    speed: 700,
+    keyboard: true,
+    rewind: true,
+  });
+
+  const sliderBlock = document.querySelector(`.${sliderBlockClass}`);
+  fillSliderProgress(sliderBlock, swiper);
 
   return swiper;
 }

@@ -1,0 +1,82 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.memorable {
+  background: linear-gradient(180deg, #d2ead1 0%, #f5f2eb 100%);
+
+  @media (max-width: vars.$lg) {
+    text-align: center;
+  }
+
+  &__row {
+    row-gap: 32px;
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(24, 40);
+    justify-content: center;
+    height: 100%;
+
+    @media (max-width: vars.$lg) {
+      align-items: center;
+    }
+  }
+
+  &__title-desc {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(20, 32);
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 26px;
+  }
+
+  &__slider {
+    &-progress {
+      margin-top: 24px;
+
+      @media (max-width: vars.$lg) {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0%) 48.39%, rgba(0, 0, 0, 40%) 100%);
+      content: '';
+      inset: 0;
+
+      @media (max-width: vars.$lg) {
+        border-radius: 1000px;
+      }
+    }
+  }
+
+  &__img {
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    border-radius: 400px 400px 24px 24px;
+
+    @include mix.ratio(620, 570);
+
+    @media (max-width: vars.$lg) {
+      border-radius: 1000px;
+
+      @include mix.ratio(269, 350);
+    }
+  }
+}

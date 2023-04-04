@@ -6,10 +6,16 @@ export const classNames = {
   },
   slider: {
     benefits: {
+      sliderBlock: 'benefits__slider-block',
       slider: 'benefits__slider',
-      progress: 'benefits__slider-progress',
-      progressFill: 'benefits__slider-progress-fill',
-      progressTotal: 'benefits__slider-progress-text_total',
+    },
+    memorable: {
+      sliderBlock: 'memorable__slider-block',
+      slider: 'memorable__slider',
     },
   },
+  sliderProgress: {
+    fill: 'swiper-progress-fill',
+    total: 'swiper-progress-text_total',
+  }
 };

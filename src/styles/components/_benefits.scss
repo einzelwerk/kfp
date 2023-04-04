@@ -29,31 +29,7 @@
     }
 
     &-progress {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      justify-content: space-between;
       margin-top: 20px;
-      color: vars.$orange;
-      font-weight: 300;
-      font-size: 18px;
-      font-family: 'Test Tiempos Headline', sans-serif;
-      line-height: 23px;
-    }
-
-    &-progress-line {
-      flex-grow: 1;
-      height: 2px;
-      background: rgba(29, 27, 24, 16%);
-      border-radius: 100px;
-    }
-
-    &-progress-fill {
-      width: 0;
-      height: 100%;
-      background: vars.$orange;
-      border-radius: 100px;
-      transition: width 0.3s ease-in-out;
     }
   }
 
@@ -87,6 +63,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 2;
     padding: 26px;
     font-weight: 500;
     font-size: 20px;

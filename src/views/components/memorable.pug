@@ -1,0 +1,26 @@
+mixin memorable
+  section.memorable.section
+    .memorable__container.container
+      .row.memorable__row
+        .col-6.col-xxl-7.col-lg
+          .memorable__text-block
+            .memorable__title-desc 
+              h2.memorable__title.section__title 20 Minuten, die fürs ganze Leben in Erinnerung bleiben!
+              p.memorable__desc Auch, wenn heute ein Wochentag ist und Ihr keine große Feier geplant habt oder nicht dabei sein könnt, werden unsere Animateure ein richtiges Märchen zum Leben bringen, von dem jedes Kind träumt. Diese Überraschung wird die Kleinen garantiert glücklich machen und ist dazu noch ganz preiswert, wenn’s keine große Party werden soll.
+            button.memorable__btn.btn.btn_orange(type="button") Jetzt bestellen
+        .col-6.col-xxl-5.col-lg
+          .memorable__slider-block
+            .memorable__slider.swiper 
+              ul.swiper-wrapper 
+                - let i = 0;
+                while i < 12
+                  - i++;
+                  li.swiper-slide
+                    .memorable__item
+                      picture.memorable__img-wrap
+                        img.memorable__img(src="@/assets/img/memorable/img.jpg" alt="")
+            .memorable__slider-progress.swiper-progress
+              span.swiper-progress-text 01
+              .swiper-progress-line
+                .swiper-progress-fill
+              span.swiper-progress-text.swiper-progress-text_total

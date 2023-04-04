@@ -1,6 +1,6 @@
-import { initBenefitsSlider } from './modules/sliders';
+import { initBenefitsSlider, initMemorableSlider } from './modules/sliders';
 
 import 'normalize.css';
 
-initBenefitsSlider()
-
+initBenefitsSlider();
+initMemorableSlider();

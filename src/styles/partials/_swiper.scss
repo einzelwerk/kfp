@@ -1,4 +1,39 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
 .swiper {
   width: 100%;
   height: auto;
+
+  &-progress {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    color: vars.$orange;
+    font-weight: 300;
+    font-size: fn.cmin(18, 20);
+    font-family: 'Test Tiempos Headline', sans-serif;
+    line-height: fn.cmin(23, 26);
+
+    &-text {
+      min-width: fn.cmin(24, 60);
+    }
+
+    &-line {
+      flex-grow: 1;
+      height: 2px;
+      background: rgba(29, 27, 24, 16%);
+      border-radius: 100px;
+    }
+
+    &-fill {
+      width: 0;
+      height: 100%;
+      background: vars.$orange;
+      border-radius: 100px;
+      transition: width 0.3s ease-in-out;
+    }
+  }
 }

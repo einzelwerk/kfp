@@ -23,12 +23,21 @@
 }
 
 .section {
-  padding: fn.cmin(40,80) 0;
+  padding: fn.cmin(40, 80) 0;
 
   &__title {
     font-weight: 400;
-    font-size: fn.cmin(24,36);
+    font-size: fn.cmin(28, 36);
     font-family: Lora, sans-serif;
-    line-height: fn.cmin(31,47);
+    line-height: fn.cmin(36, 47);
+
+    @media (max-width: vars.$lg) {
+      font-weight: 300;
+    }
+
+    &_small {
+      font-family: Lora, sans-serif;
+      line-height: fn.cmin(31, 47);
+    }
   }
 }
