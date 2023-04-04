@@ -8700,31 +8700,28 @@ var classNames = {
   },
   slider: {
     benefits: {
-      slider: 'benefits__slider',
-      progress: 'benefits__slider-progress',
-      progressFill: 'benefits__slider-progress-fill',
-      progressTotal: 'benefits__slider-progress-text_total'
+      sliderBlock: 'benefits__slider-block',
+      slider: 'benefits__slider'
+    },
+    memorable: {
+      sliderBlock: 'memorable__slider-block',
+      slider: 'memorable__slider'
     }
+  },
+  sliderProgress: {
+    fill: 'swiper-progress-fill',
+    total: 'swiper-progress-text_total'
   }
 };
 ;// CONCATENATED MODULE: ./src/scripts/modules/sliders.js
 
 
 
-function initBenefitsSlider() {
-  var sliderClass = classNames.slider.benefits.slider;
-  var sliderProgressBlock = classNames.slider.benefits.progress;
-  var sliderProgressFillClass = classNames.slider.benefits.progressFill;
-  var sliderProgressTotalClass = classNames.slider.benefits.progressTotal;
-  var swiper = new core(".".concat(sliderClass), {
-    spaceBetween: 20,
-    speed: 1000,
-    keyboard: true,
-    rewind: true
-  });
-  var progressBlock = document.querySelector(".".concat(sliderProgressBlock));
-  var fill = progressBlock.querySelector(".".concat(sliderProgressFillClass));
-  var total = progressBlock.querySelector(".".concat(sliderProgressTotalClass));
+function fillSliderProgress(sliderBlock, swiper) {
+  var fillClass = classNames.sliderProgress.fill;
+  var totalClass = classNames.sliderProgress.total;
+  var fill = sliderBlock.querySelector(".".concat(fillClass));
+  var total = sliderBlock.querySelector(".".concat(totalClass));
   total.textContent = swiper.slides.length < 10 ? "0".concat(swiper.slides.length) : swiper.slides.length;
   function handler() {
     var progress = (swiper.activeIndex + 1) / swiper.slides.length;
@@ -8732,11 +8729,37 @@ function initBenefitsSlider() {
   }
   swiper.on('slideChange', handler);
   handler();
+}
+function initBenefitsSlider() {
+  var sliderBlockClass = classNames.slider.benefits.sliderBlock;
+  var sliderClass = classNames.slider.benefits.slider;
+  var swiper = new core(".".concat(sliderClass), {
+    spaceBetween: 16,
+    speed: 700,
+    keyboard: true,
+    rewind: true
+  });
+  var sliderBlock = document.querySelector(".".concat(sliderBlockClass));
+  fillSliderProgress(sliderBlock, swiper);
+  return swiper;
+}
+function initMemorableSlider() {
+  var sliderBlockClass = classNames.slider.memorable.sliderBlock;
+  var sliderClass = classNames.slider.memorable.slider;
+  var swiper = new core(".".concat(sliderClass), {
+    spaceBetween: 16,
+    speed: 700,
+    keyboard: true,
+    rewind: true
+  });
+  var sliderBlock = document.querySelector(".".concat(sliderBlockClass));
+  fillSliderProgress(sliderBlock, swiper);
   return swiper;
 }
 ;// CONCATENATED MODULE: ./src/scripts/app.js
 
 
 initBenefitsSlider();
+initMemorableSlider();
 /******/ })()
 ;
