@@ -1,0 +1,68 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.hero {
+  height: 100vh;
+
+  &__order {
+    @media (max-width: vars.$lg) {
+      order: 2;
+    }
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(32, 40);
+    justify-content: flex-end;
+    height: 100%;
+    margin-top: auto;
+    padding: fn.cmin(24, 80) 0 fn.cmin(40, 80);
+  }
+
+  &__title-desc {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(20, 32);
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: fn.cmax(32, 50);
+    font-family: Lora, sans-serif;
+    line-height: fn.cmax(40, 60);
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: fn.cmin(16, 20);
+    font-family: 'Noto Sans', sans-serif;
+    line-height: fn.cmin(24, 28);
+  }
+
+  &__poster {
+    &-block,
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    &-block {
+      position: relative;
+    }
+
+    border-radius: 1000px 1000px 24px 24px;
+
+    @include mix.ratio(640, 652);
+  }
+
+  &__particles {
+    position: absolute;
+    top: 9%;
+    right: 0;
+    width: fn.cmin(70, 128);
+    aspect-ratio: 1 / 1;
+    background: url('@/assets/img/particles.svg') no-repeat center / contain;
+  }
+}

@@ -1,0 +1,28 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: vars.$text-dark;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: 'Noto Sans', sans-serif;
+  font-style: normal;
+  line-height: 1.4;
+  background: vars.$white;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(vars.$container + (vars.$padding * 2));
+  margin: 0 auto;
+  padding-right: vars.$padding;
+  padding-left: vars.$padding;
+}
+
+.section {
+  padding: 80px 0;
+}

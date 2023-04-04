@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-rational-order"
+  ],
+  "plugins": ["stylelint-scss"],
+  "ignoreFiles": ["**/*", "!src/**/*"],
+  "rules": {
+    "no-descending-specificity": null,
+    "scss/no-global-function-names": null,
+    "selector-class-pattern": null,
+    "color-function-notation": null
+  }
+}

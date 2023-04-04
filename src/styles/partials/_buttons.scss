@@ -1,0 +1,30 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  width: fit-content;
+  padding: 13px 57px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Noto Sans', sans-serif;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 100px;
+
+  @media (max-width: vars.$sm) {
+    width: 100%;
+  }
+
+  &_orange {
+    background: #c17441;
+  }
+
+  &__brown {
+    background: #4d4039;
+  }
+}

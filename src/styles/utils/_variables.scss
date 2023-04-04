@@ -1,0 +1,61 @@
+// Min Width
+$min-xxl: 1440px;
+$min-xl: 1200px;
+$min-lg: 992px;
+$min-md: 768px;
+$min-sm: 576px;
+$min: 360px;
+
+// Max Width
+$xxl: $min-xxl - 0.02px;
+$xl: $min-xl - 0.02px;
+$lg: $min-lg - 0.02px;
+$md: $min-md - 0.02px;
+$sm: $min-sm - 0.02px;
+
+// Grid gutter
+$gutter: 30px;
+
+// Container
+:root {
+  --container: 1320px;
+  --padding: 60px;
+
+  @media (max-width: $xxl) {
+    --container: 1140px;
+    --padding: 30px;
+  }
+
+  @media (max-width: $xl) {
+    --container: 950px;
+    --padding: 25px;
+  }
+
+  @media (max-width: $lg) {
+    --container: 720px;
+    --padding: 20px;
+  }
+
+  @media (max-width: $md) {
+    --container: 530px;
+    --padding: 16px;
+  }
+
+  @media (max-width: $sm) {
+    --container: 100%;
+  }
+}
+
+$container: var(--container);
+$padding: var(--padding);
+
+// Colors
+$white: #f4f0e9;
+$gradiend-1: rgba(249, 213, 215, 40%);
+$gradiend-2: rgba(209, 233, 208, 40%);
+$orange: #bf713f;
+$orange-gradient: linear-gradient(113.4deg, rgba(235, 161, 105, 98%) 0%, #bf713f 100%);
+$brown-light: #755441;
+$brown: #4d4039;
+$gray: #b6b4b2;
+$text-dark: #37302c;
