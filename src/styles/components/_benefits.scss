@@ -1,0 +1,96 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.benefits {
+  background: linear-gradient(180deg, #f5f2eb 0%, #d1e9d0 100%);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(32, 60);
+    align-items: center;
+    text-align: center;
+  }
+
+  &__list {
+    @media (max-width: vars.$md) {
+      display: none;
+    }
+  }
+
+  &__slider {
+    &-block {
+      width: 100%;
+
+      @media (min-width: vars.$min-md) {
+        display: none;
+      }
+    }
+
+    &-progress {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      color: vars.$orange;
+      font-weight: 300;
+      font-size: 18px;
+      font-family: 'Test Tiempos Headline', sans-serif;
+      line-height: 23px;
+    }
+
+    &-progress-line {
+      flex-grow: 1;
+      height: 2px;
+      background: rgba(29, 27, 24, 16%);
+      border-radius: 100px;
+    }
+
+    &-progress-fill {
+      width: 0;
+      height: 100%;
+      background: vars.$orange;
+      border-radius: 100px;
+      transition: width 0.3s ease-in-out;
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(238, 233, 221, 0%) 37.44%, #eee9dd 88.75%);
+      border-radius: 200px 200px 12px 12px;
+      content: '';
+      inset: 0;
+    }
+  }
+
+  &__img {
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    @include mix.ratio(300, 400);
+
+    border-radius: 200px 200px 12px 12px;
+  }
+
+  &__desc {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 26px;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Lora, sans-serif;
+    line-height: 28px;
+  }
+}

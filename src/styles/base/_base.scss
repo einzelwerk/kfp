@@ -10,7 +10,6 @@
   font-weight: 400;
   font-size: 20px;
   font-family: 'Noto Sans', sans-serif;
-  font-style: normal;
   line-height: 1.4;
   background: vars.$white;
 }
@@ -24,5 +23,12 @@
 }
 
 .section {
-  padding: 80px 0;
+  padding: fn.cmin(40,80) 0;
+
+  &__title {
+    font-weight: 400;
+    font-size: fn.cmin(24,36);
+    font-family: Lora, sans-serif;
+    line-height: fn.cmin(31,47);
+  }
 }

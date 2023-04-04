@@ -6,8 +6,10 @@
 //  Partials
 @use './base/base';
 @use './partials/buttons';
+@use './partials/swiper';
 
 //  Components
 @use './components/header';
 @use './components/footer';
 @use './components/hero';
+@use './components/benefits';

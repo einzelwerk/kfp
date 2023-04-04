@@ -3,7 +3,7 @@
 @use '../utils/functions' as fn;
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
 
   &__order {
     @media (max-width: vars.$lg) {

@@ -2,7 +2,7 @@
   font-weight: 500;
   font-family: Lora;
   font-style: normal;
-  src: url('@/fonts/Lora-Medium.woff2') format('woff2'), url('@/fonts/Lora-Medium.woff') format('woff');
+  src: url('@/assets/fonts/Lora-Medium.woff2') format('woff2'), url('@/assets/fonts/Lora-Medium.woff') format('woff');
   font-display: swap;
 }
 
@@ -10,7 +10,7 @@
   font-weight: 400;
   font-family: Lora;
   font-style: normal;
-  src: url('@/fonts/Lora-Regular.woff2') format('woff2'), url('@/fonts/Lora-Regular.woff') format('woff');
+  src: url('@/assets/fonts/Lora-Regular.woff2') format('woff2'), url('@/assets/fonts/Lora-Regular.woff') format('woff');
   font-display: swap;
 }
 
@@ -18,7 +18,8 @@
   font-weight: 700;
   font-family: 'Noto Sans';
   font-style: normal;
-  src: url('@/fonts/NotoSans-Bold.woff2') format('woff2'), url('@/fonts/NotoSans-Bold.woff') format('woff');
+  src: url('@/assets/fonts/NotoSans-Bold.woff2') format('woff2'),
+    url('@/assets/fonts/NotoSans-Bold.woff') format('woff');
   font-display: swap;
 }
 
@@ -26,15 +27,16 @@
   font-weight: 400;
   font-family: 'Noto Sans';
   font-style: normal;
-  src: url('@/fonts/NotoSans-Regular.woff2') format('woff2'), url('@/fonts/NotoSans-Regular.woff') format('woff');
+  src: url('@/assets/fonts/NotoSans-Regular.woff2') format('woff2'),
+    url('@/assets/fonts/NotoSans-Regular.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 300;
-  font-family: TiemposHeadline;
+  font-family: 'Test Tiempos Headline';
   font-style: normal;
-  src: url('@/fonts/TiemposHeadline-Light.woff2') format('woff2'),
-    url('@/fonts/TiemposHeadline-Light.woff') format('woff');
+  src: url('@/assets/fonts/TiemposHeadline-Light.woff2') format('woff2'),
+    url('@/assets/fonts/TiemposHeadline-Light.woff') format('woff');
   font-display: swap;
 }
