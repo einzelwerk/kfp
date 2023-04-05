@@ -1,0 +1,123 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.offer {
+  &__content {
+    padding: fn.cmin(24, 60) fn.cmin(20, 60) fn.cmin(32, 60);
+    color: #fff;
+    background: linear-gradient(113.4deg, rgba(234, 161, 106, 98.4%) 8.38%, #bf713f 89.62%);
+    border-radius: 32px;
+
+    @media (max-width: vars.$xl) {
+      text-align: center;
+    }
+  }
+
+  &__order {
+    @media (max-width: vars.$xl) {
+      order: 2;
+    }
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(24, 40);
+    justify-content: center;
+    height: 100%;
+
+    @media (max-width: vars.$xl) {
+      align-items: center;
+    }
+  }
+
+  &__title-desc {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(20, 24);
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: fn.cmin(24, 48);
+    font-family: Lora, sans-serif;
+    line-height: fn.cmin(32, 56);
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: fn.cmin(20, 24);
+    font-family: Lora, sans-serif;
+    line-height: fn.cmin(30, 34);
+  }
+
+  &__poster {
+    &-block,
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    &-block {
+      position: relative;
+    }
+
+    border-radius: 1000px 1000px 24px 24px;
+
+    @include mix.ratio(600, 560);
+
+    &-desc {
+      position: absolute;
+      left: 0;
+      width: max-content;
+      max-width: fn.cmin(175, 330);
+      color: vars.$text-dark;
+      border-radius: fn.cmin(17, 32);
+      backdrop-filter: blur(5px);
+
+      &-1 {
+        bottom: 23%;
+        padding: fn.cmin(11, 20) fn.cmin(15, 20);
+        font-weight: 400;
+        font-size: fn.cmin(12, 22);
+        font-family: 'Noto Sans', sans-serif;
+        line-height: fn.cmin(16, 31);
+        background: rgba(vars.$white, 0.9);
+        transform: translateX(-50%) rotate(-6deg);
+
+        @media (max-width: vars.$xxl) {
+          bottom: 6%;
+          left: 50%;
+          transform: translateX(-50%) rotate(-6deg);
+        }
+      }
+
+      &-2 {
+        bottom: 12.5%;
+        padding: 16px;
+        font-weight: 500;
+        font-size: fn.cmin(17, 32);
+        font-family: Lora, sans-serif;
+        line-height: fn.cmin(24, 45);
+        background: #abe7a6;
+        transform: translateX(-36%) rotate(-6deg);
+
+        @media (max-width: vars.$xxl) {
+          bottom: 0%;
+          left: 50%;
+          transform: translate(-50%, 50%) rotate(-6deg);
+        }
+      }
+    }
+  }
+
+  &__particles {
+    position: absolute;
+    top: 9%;
+    right: 0;
+    width: fn.cmin(70, 128);
+    aspect-ratio: 1 / 1;
+    background: url('@/assets/img/particles.svg') no-repeat center / contain;
+  }
+}

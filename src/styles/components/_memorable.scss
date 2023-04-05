@@ -46,6 +46,48 @@
         display: none;
       }
     }
+
+    &-btn {
+      &-block {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        z-index: 7;
+        display: flex;
+        gap: 12px;
+        transform: translateX(-50%);
+
+        @media (max-width: vars.$lg) {
+          display: none;
+        }
+      }
+
+      position: relative;
+      padding: 15px 33px;
+      background: linear-gradient(113.4deg, rgba(234, 161, 106, 98.4%) 8.38%, #bf713f 89.62%);
+      border-radius: 30px;
+
+      &_next {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      &::after {
+        position: absolute;
+        margin: 9px;
+        border: 1px solid vars.$white;
+        border-radius: 21px;
+        content: '';
+        inset: 0;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        color: vars.$white;
+      }
+    }
   }
 
   &__item {

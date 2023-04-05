@@ -1,0 +1,97 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.program {
+  &__desktop {
+    @media (max-width: vars.$lg) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    width: 100%;
+
+    @media (min-width: vars.$min-lg) {
+      display: none;
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(32, 60);
+  }
+
+  &__img {
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    border-radius: 32px;
+
+    @include mix.ratio(620, 600);
+
+    @media (max-width: vars.$lg) {
+      @include mix.ratio(300, 240);
+    }
+  }
+
+  &__acc {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-left: 60px;
+
+    &-content {
+      padding-top: fn.cmin(16, 24);
+    }
+  }
+
+  &__name {
+    position: relative;
+    font-weight: 400;
+    font-size: fn.cmin(24, 28);
+    font-family: Lora, sans-serif;
+    line-height: fn.cmin(32, 36);
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 22px);
+      width: 20px;
+      height: 20px;
+      background: url('@/assets/img/particle-item.svg') no-repeat center / contain;
+      transform: translateY(-50%);
+      content: '';
+
+      @media (max-width: vars.$lg) {
+        content: none;
+      }
+    }
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: fn.cmin(16, 18);
+    font-family: 'Noto Sans', sans-serif;
+    line-height: fn.cmin(24, 25);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

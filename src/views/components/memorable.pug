@@ -19,8 +19,16 @@ mixin memorable
                     .memorable__item
                       picture.memorable__img-wrap
                         img.memorable__img(src="@/assets/img/memorable/img.jpg" alt="")
+              .memorable__slider-btn-block 
+                button.memorable__slider-btn.memorable__slider-btn_prev(type="button")
+                  svg
+                    use(xlink:href="./assets/sprite.svg#arrow-left")
+                button.memorable__slider-btn.memorable__slider-btn_next(type="button")
+                  svg
+                    use(xlink:href="./assets/sprite.svg#arrow-left")
             .memorable__slider-progress.swiper-progress
               span.swiper-progress-text 01
               .swiper-progress-line
                 .swiper-progress-fill
               span.swiper-progress-text.swiper-progress-text_total
+

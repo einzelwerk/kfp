@@ -1,4 +1,4 @@
-import Swiper from 'swiper';
+import Swiper, { Autoplay, Navigation } from 'swiper';
 import { classNames } from '../utils/classNames';
 
 import 'swiper/css/bundle';
@@ -43,6 +43,11 @@ export function initMemorableSlider() {
   const sliderClass = classNames.slider.memorable.slider;
 
   const swiper = new Swiper(`.${sliderClass}`, {
+    modules: [Navigation],
+    navigation: {
+      prevEl: `.${classNames.slider.memorable.btnPrev}`,
+      nextEl: `.${classNames.slider.memorable.btnNext}`,
+    },
     spaceBetween: 16,
     speed: 700,
     keyboard: true,
@@ -53,4 +58,18 @@ export function initMemorableSlider() {
   fillSliderProgress(sliderBlock, swiper);
 
   return swiper;
+}
+
+export function initProgramSlider() {
+  const sliderClass = classNames.slider.program;
+  
+  return new Swiper(`.${sliderClass}`, {
+    modules: [Autoplay],
+    autoplay: {
+      delay: 2000,
+    },
+    spaceBetween: 16,
+    speed: 700,
+    rewind: true,
+  });
 }
