@@ -7482,7 +7482,7 @@ function Autoplay({
   };
   const onVisibilityChange = () => {
     if (swiper.destroyed || !swiper.autoplay.running) return;
-    const document = ssr_window_esm_getDocument();
+    const document = getDocument();
     if (document.visibilityState === 'hidden') {
       pausedByInteraction = true;
       pause(true);
@@ -7513,11 +7513,11 @@ function Autoplay({
     swiper.el.removeEventListener('pointerleave', onPointerLeave);
   };
   const attachDocumentEvents = () => {
-    const document = ssr_window_esm_getDocument();
+    const document = getDocument();
     document.addEventListener('visibilitychange', onVisibilityChange);
   };
   const detachDocumentEvents = () => {
-    const document = ssr_window_esm_getDocument();
+    const document = getDocument();
     document.removeEventListener('visibilitychange', onVisibilityChange);
   };
   on('init', () => {
@@ -7816,7 +7816,7 @@ function freeMode({
     }
     data.velocities.push({
       position: touches[swiper.isHorizontal() ? 'currentX' : 'currentY'],
-      time: now()
+      time: utils_now()
     });
   }
   function onTouchEnd({
@@ -7830,7 +7830,7 @@ function freeMode({
       touchEventsData: data
     } = swiper;
     // Time diff
-    const touchEndTime = now();
+    const touchEndTime = utils_now();
     const timeDiff = touchEndTime - data.touchStartTime;
     if (currentPos < -swiper.minTranslate()) {
       swiper.slideTo(swiper.activeIndex);
@@ -7857,7 +7857,7 @@ function freeMode({
         }
         // this implies that the user stopped moving a finger then released.
         // There would be no events with distance zero, so the last event is stale.
-        if (time > 150 || now() - lastMoveEvent.time > 300) {
+        if (time > 150 || utils_now() - lastMoveEvent.time > 300) {
           swiper.velocity = 0;
         }
       } else {
@@ -7952,13 +7952,13 @@ function freeMode({
         swiper.setTranslate(newPosition);
         swiper.transitionStart(true, swiper.swipeDirection);
         swiper.animating = true;
-        elementTransitionEnd(wrapperEl, () => {
+        utils_elementTransitionEnd(wrapperEl, () => {
           if (!swiper || swiper.destroyed || !data.allowMomentumBounce) return;
           emit('momentumBounce');
           swiper.setTransition(params.speed);
           setTimeout(() => {
             swiper.setTranslate(afterBouncePosition);
-            elementTransitionEnd(wrapperEl, () => {
+            utils_elementTransitionEnd(wrapperEl, () => {
               if (!swiper || swiper.destroyed) return;
               swiper.transitionEnd();
             });
@@ -7972,7 +7972,7 @@ function freeMode({
         swiper.transitionStart(true, swiper.swipeDirection);
         if (!swiper.animating) {
           swiper.animating = true;
-          elementTransitionEnd(wrapperEl, () => {
+          utils_elementTransitionEnd(wrapperEl, () => {
             if (!swiper || swiper.destroyed) return;
             swiper.transitionEnd();
           });
@@ -8822,7 +8822,8 @@ var classNames = {
       btnPrev: 'memorable__slider-btn_prev',
       btnNext: 'memorable__slider-btn_next'
     },
-    program: 'program__slider'
+    program: 'program__slider',
+    subscribe: 'subscribe__slider'
   },
   sliderProgress: {
     fill: 'swiper-progress-fill',
@@ -8833,7 +8834,27 @@ var classNames = {
     img: 'program__img'
   }]
 };
+;// CONCATENATED MODULE: ./src/scripts/utils/breakpoints.js
+var breakpointsMin = {
+  xxl: 1440,
+  xl: 1200,
+  lg: 992,
+  md: 768,
+  sm: 576
+};
+var breakpointsMax = {
+  xxl: breakpointsMin.xxl - 0.02,
+  xl: breakpointsMin.xl - 0.02,
+  lg: breakpointsMin.lg - 0.02,
+  md: breakpointsMin.md - 0.02,
+  sm: breakpointsMin.sm - 0.02
+};
 ;// CONCATENATED MODULE: ./src/scripts/modules/sliders.js
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 
 
 
@@ -8884,13 +8905,30 @@ function initMemorableSlider() {
 function initProgramSlider() {
   var sliderClass = classNames.slider.program;
   return new core(".".concat(sliderClass), {
-    modules: [Autoplay],
-    autoplay: {
-      delay: 2000
-    },
     spaceBetween: 16,
     speed: 700,
     rewind: true
+  });
+}
+function initSubscribeSlider() {
+  var _breakpoints;
+  var sliderClass = classNames.slider.subscribe;
+  return new core(".".concat(sliderClass), {
+    modules: [freeMode],
+    freeMode: true,
+    spaceBetween: 16,
+    speed: 700,
+    rewind: true,
+    slidesPerView: 1.3,
+    centeredSlides: true,
+    loop: true,
+    breakpoints: (_breakpoints = {}, _defineProperty(_breakpoints, breakpointsMin.md, {
+      slidesPerView: 3.6,
+      spaceBetween: 20
+    }), _defineProperty(_breakpoints, breakpointsMin.lg, {
+      slidesPerView: 4.2,
+      spaceBetween: 40
+    }), _breakpoints)
   });
 }
 ;// CONCATENATED MODULE: ./src/scripts/modules/initImgTabs.js
@@ -8914,16 +8952,17 @@ function initAccImgTabs() {
 
 
 
+// Sliders
+initBenefitsSlider();
+initMemorableSlider();
+initProgramSlider();
+initSubscribeSlider();
+
 // Accordion
 // eslint-disable-next-line
 new p();
 
 // Img Tabs
 initAccImgTabs();
-
-// Sliders
-initBenefitsSlider();
-initMemorableSlider();
-initProgramSlider();
 /******/ })()
 ;
