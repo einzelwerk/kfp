@@ -1,0 +1,68 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.subscribe {
+  background: linear-gradient(180deg, #f5f2eb 0%, #eae2cf 47.4%, #f5f2eb 100%),
+    linear-gradient(180deg, #fbe1e1 0%, #f5f2eb 100%);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fn.cmin(32, 60);
+    align-items: center;
+  }
+
+  &__title {
+    text-align: center;
+
+    &_profile {
+      color: transparent;
+      background: linear-gradient(267.71deg, #ffa901 0%, #de01a2 100%);
+      background-clip: text;
+      -webkit-background-clip: text; // stylelint-disable-line
+    }
+  }
+
+  &__slider {
+    width: 100vw;
+
+    &-block {
+      margin: 0 fn.overhang();
+    }
+  }
+
+  &__img {
+    &-wrap,
+    & {
+      width: 100%;
+    }
+
+    border-radius: 10000px 10000px 12px 12px;
+
+    @include mix.ratio(300, 360);
+  }
+
+  &__link {
+    display: flex;
+    gap: 10px;
+    padding: fn.cmin(13, 15) 49px;
+    color: #eaa16afb;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 140%;
+    text-transform: uppercase;
+    border: 1px solid #eaa16afb;
+    border-radius: 100px;
+
+    @media (max-width: vars.$sm) {
+      width: 100%;
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

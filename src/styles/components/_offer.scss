@@ -3,6 +3,8 @@
 @use '../utils/functions' as fn;
 
 .offer {
+  background: linear-gradient(180deg, #FBE0E1 0%, #F5F2EB 100%);
+
   &__content {
     padding: fn.cmin(24, 60) fn.cmin(20, 60) fn.cmin(32, 60);
     color: #fff;

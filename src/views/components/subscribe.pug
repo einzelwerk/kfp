@@ -1,0 +1,30 @@
+mixin subscribe
+  section.subscribe.section
+    .container.subscribe__container   
+      h2.subscribe__title.section__title.section__title_small 
+        | Damit Ihr keine Neuigkeiten verpasst, abonniert uns auf Instagram 
+        span.subscribe__title_profile @kidsfunpalace
+      .subscribe__slider-block
+        .subscribe__slider.swiper 
+          ul.swiper-wrapper 
+            - let i = 0;
+            while i < 3
+              - i++;
+              li.swiper-slide
+                picture.subscribe__img-wrap 
+                  img.subscribe__img(src="@/assets/img/subscribe/item-1.jpg" alt="")
+              li.swiper-slide
+                picture.subscribe__img-wrap 
+                  img.subscribe__img(src="@/assets/img/subscribe/item-2.jpg" alt="")
+              li.swiper-slide
+                picture.subscribe__img-wrap 
+                  img.subscribe__img(src="@/assets/img/subscribe/item-3.jpg" alt="")
+              li.swiper-slide
+                picture.subscribe__img-wrap 
+                  img.subscribe__img(src="@/assets/img/subscribe/item-4.jpg" alt="")
+              li.swiper-slide
+                picture.subscribe__img-wrap 
+                  img.subscribe__img(src="@/assets/img/subscribe/item-5.jpg" alt="")
+      a.btn.subscribe__link(href="#") 
+        img.subscribe__link-icon(src="@/assets/img/instagram.svg", alt="")
+        span Zum Instagram  

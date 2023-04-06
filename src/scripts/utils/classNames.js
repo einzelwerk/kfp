@@ -16,6 +16,7 @@ export const classNames = {
       btnNext: 'memorable__slider-btn_next',
     },
     program: 'program__slider',
+    subscribe: 'subscribe__slider',
   },
   sliderProgress: {
     fill: 'swiper-progress-fill',

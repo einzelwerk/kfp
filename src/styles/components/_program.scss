@@ -3,6 +3,8 @@
 @use '../utils/functions' as fn;
 
 .program {
+  background: linear-gradient(180deg, #f5f2eb 0%, #fbe0e1 100%);
+
   &__desktop {
     @media (max-width: vars.$lg) {
       display: none;
@@ -48,6 +50,17 @@
     gap: 48px;
     padding-left: 60px;
 
+    &-head.is-active {
+      .program__name {
+        color: vars.$text-dark;
+
+        &::before {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+
     &-content {
       padding-top: fn.cmin(16, 24);
     }
@@ -55,10 +68,23 @@
 
   &__name {
     position: relative;
+    color: rgba(vars.$text-dark, 0.5);
     font-weight: 400;
     font-size: fn.cmin(24, 28);
     font-family: Lora, sans-serif;
     line-height: fn.cmin(32, 36);
+    transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: vars.$text-dark;
+
+      &::before {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
 
     &::before {
       position: absolute;
@@ -68,6 +94,9 @@
       height: 20px;
       background: url('@/assets/img/particle-item.svg') no-repeat center / contain;
       transform: translateY(-50%);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
       content: '';
 
       @media (max-width: vars.$lg) {

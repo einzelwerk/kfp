@@ -1,5 +1,6 @@
-import Swiper, { Autoplay, Navigation } from 'swiper';
+import Swiper, { FreeMode, Navigation } from 'swiper';
 import { classNames } from '../utils/classNames';
+import { breakpointsMin } from '../utils/breakpoints';
 
 import 'swiper/css/bundle';
 
@@ -62,14 +63,35 @@ export function initMemorableSlider() {
 
 export function initProgramSlider() {
   const sliderClass = classNames.slider.program;
-  
+
   return new Swiper(`.${sliderClass}`, {
-    modules: [Autoplay],
-    autoplay: {
-      delay: 2000,
-    },
     spaceBetween: 16,
     speed: 700,
     rewind: true,
+  });
+}
+
+export function initSubscribeSlider() {
+  const sliderClass = classNames.slider.subscribe;
+
+  return new Swiper(`.${sliderClass}`, {
+    modules: [FreeMode],
+    freeMode: true,
+    spaceBetween: 16,
+    speed: 700,
+    rewind: true,
+    slidesPerView: 1.3,
+    centeredSlides: true,
+    loop: true,
+    breakpoints: {
+      [breakpointsMin.md]: {
+        slidesPerView: 3.6,
+        spaceBetween: 20,
+      },
+      [breakpointsMin.lg]: {
+        slidesPerView: 4.2,
+        spaceBetween: 40,
+      },
+    },
   });
 }
