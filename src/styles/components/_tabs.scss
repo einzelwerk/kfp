@@ -1,0 +1,26 @@
+@use '../utils/variables' as *;
+
+.tabs-slider {
+  .swiper-slide {
+    width: auto;
+  }
+
+  .swiper-scrollbar {;
+    position: static;
+    display: none;
+    margin-top: 16px;
+
+    --swiper-scrollbar-drag-bg-color:#{$orange};
+
+    @media (max-width: $md) {
+      display: block;
+    }
+  }
+
+  &__item {
+    &[aria-selected="true"] {
+      color:$orange;
+      border-color: $orange;
+    }
+  }
+}

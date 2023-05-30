@@ -1,4 +1,4 @@
-import Swiper, { FreeMode, Navigation } from 'swiper';
+import Swiper, { FreeMode, Navigation, Scrollbar,  } from 'swiper';
 import { classNames } from '../utils/classNames';
 import { breakpointsMin } from '../utils/breakpoints';
 
@@ -94,4 +94,27 @@ export function initSubscribeSlider() {
       },
     },
   });
+}
+
+
+export function initTabsSlider() {
+  const sliderClass = document.querySelector('.js-tabs-slider');
+  return new Swiper(sliderClass, {
+    modules: [Scrollbar, FreeMode],
+    slidesPerView: 'auto',
+   
+    scrollbar: {
+      el: sliderClass.querySelector('.swiper-scrollbar')
+    },
+    freeMode: true,
+    spaceBetween: 12,
+    preventClicksPropagation: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      [breakpointsMin.md]: {
+        scrollbar: false
+      },
+    },
+
+  })
 }

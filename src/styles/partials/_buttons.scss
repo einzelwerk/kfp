@@ -1,6 +1,6 @@
 @use '../utils/mixins' as mix;
-@use '../utils/variables' as vars;
-@use '../utils/functions' as fn;
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
 
 .btn {
   display: inline-flex;
@@ -16,7 +16,7 @@
   text-transform: uppercase;
   border-radius: 100px;
 
-  @media (max-width: vars.$sm) {
+  @media (max-width: $sm) {
     width: 100%;
   }
 
@@ -26,5 +26,19 @@
 
   &_brown {
     background: #4d4039;
+  }
+
+  &_default {
+    color:$text-dark;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: none;
+    border: 1px solid rgba(117, 84, 65, 20%);
+    border-radius: 10000px;
+  }
+
+  &_white {
+    color:$text-dark;
+    background: $white;
   }
 }

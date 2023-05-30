@@ -1,0 +1,138 @@
+@use '../utils/variables' as *;
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  gap:40px;
+  margin-top: 60px;
+
+  @media (max-width: $md) {
+    grid-template-columns: 1fr;
+    gap:16px;
+  }
+
+  &__col {
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap:40px;
+
+    @media (max-width: $md) {
+      display: flex;
+      flex-direction: column;
+      gap:16px;
+
+      &_active {
+        display: flex !important;
+      }
+
+      &:nth-child(2){
+        display: none;
+        order: 3;
+
+       
+      }
+    }
+  }
+
+  &__item {
+    grid-column: span 12;
+    overflow: hidden;
+    border-radius: 24px;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &_text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      color:$white;
+      background: linear-gradient(113.4deg, rgba(234, 161, 106, 98.4%) 8.38%, #BF713F 89.62%);
+      border-radius: 36px;
+    }
+
+    &_video {
+      position: relative;
+      min-height: 800px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 24px;
+    font-family: Lora, sans-serif;
+  }
+
+  &__desc {
+    margin-bottom: auto;
+    font-size: 18px;
+    opacity: 0.92;
+  }
+
+  &__btn {
+    padding: 14px 32px;
+  }
+
+  &__image {
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    height: 100%;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__play {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    z-index: 12;
+    transform: translate(-50%,-50%);
+
+    img {
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      transition: .25s;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+}
+
+.category-tabs {
+  .show-gallery {
+    display: none;
+    margin-top: 32px;
+    color: #4D4039;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(77, 64, 57, 60%);
+    border-radius: 100px;
+    opacity: 0.8;
+
+    @media (max-width:$md) {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use '../utils/variables' as *;
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 48px;
+
+  &__title {
+    font-weight: 300;
+    font-size: 36px;
+    font-family: Lora, sans-serif;
+    line-height: 130%;
+    text-align: center;
+  }
+
+  &__desc {
+    color:$text-dark;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.92;
+  }
+}
